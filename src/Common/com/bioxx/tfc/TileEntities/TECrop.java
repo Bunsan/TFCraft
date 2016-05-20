@@ -154,7 +154,7 @@ public class TECrop extends NetworkTileEntity
 						tef.drainNutrients(3, crop.nutrientUsageMult);
 				}
 
-				float growthRate = (((crop.numGrowthStages / (crop.growthTime * TFC_Time.timeRatio96) + tempAdded) * nutriMult) * timeMultiplier) * TFCOptions.cropGrowthMultiplier;
+				float growthRate = Math.max(0.0f, (((crop.numGrowthStages / (crop.growthTime * TFC_Time.timeRatio96) + tempAdded) * nutriMult) * timeMultiplier) * TFCOptions.cropGrowthMultiplier);
 				if(tef!= null && tef.isInfested)
 					growthRate /= 2;
 				int oldGrowth = (int) Math.floor(growth);
@@ -184,7 +184,7 @@ public class TECrop extends NetworkTileEntity
 			}
 
 			// Snowing
-			if(worldObj.isRaining() && TFC_Climate.getHeightAdjustedTemp(worldObj, xCoord, yCoord, zCoord) < 0)
+			if (TFC_Core.isExposedToRain(worldObj, xCoord, yCoord, zCoord) && TFC_Climate.getHeightAdjustedTemp(worldObj, xCoord, yCoord, zCoord) < 0)
 			{
 				if(crop != null && !crop.dormantInFrost || growth > 1)
 				{
