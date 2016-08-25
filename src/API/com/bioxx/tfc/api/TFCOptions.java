@@ -22,6 +22,7 @@ public class TFCOptions
 	public static boolean enableSolidDetailed = true;
 	public static int maxRemovedSolidDetailed = 12;
 	public static boolean enableToolModeIndicator = true;
+	public static int recursionLimit = 220;
 
 	// Time
 	public static int yearLength = 96;
