@@ -96,7 +96,7 @@ public class ItemProPick extends ItemTerra
 					OreSpawnData osd = (OreSpawnData) iter.next();
 					if (osd != null && block == osd.block)
 					{
-						tellResult(player, new ItemStack(block));
+						tellResult(player, new ItemStack(block, 1, meta));
 						return true;
 					}
 				}
@@ -150,7 +150,7 @@ public class ItemProPick extends ItemTerra
 								OreSpawnData osd = (OreSpawnData) iter.next();
 								if (osd != null && block == osd.block)
 								{
-									ore = new ItemStack(block);
+									ore = new ItemStack(block, 1, meta);
 									break;
 								}
 							}
